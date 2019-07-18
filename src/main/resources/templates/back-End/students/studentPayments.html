@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from followtechnique.com/themes/bird_v1/theme/page_starter.htm by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 13 Jul 2016 20:28:57 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCHOOL MIS</title>
+
+    <div data-th-replace="back-End/Layout/CSS :: myCss"></div>
+
+    <link type="text/css" rel="stylesheet" href="form_tag_inputs.htm"
+          id="style">
+    <link type="text/css" rel="stylesheet" href="form_tag_inputs.htm"
+          id="theme">
+
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+
+
+
+</head>
+
+<body>
+
+<div data-th-replace="back-End/Layout/header :: myHeader"></div>
+<div class="page-container" style="min-height: 700px">
+    <div class="page-content">
+        <div data-th-replace="back-End/Layout/sidebar :: mySidebar"></div>
+        <!--  <div data-th-replace="back-End/Layout/content :: myContent">-->
+        <div class="content-wrapper" data-th-fragment="myContent">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+
+                    <ul class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                        <li><a href="/students">Students</a></li>
+                        <li>Payments info</li>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+
+            <div class="content">
+
+                <!-- <h4>
+                    Meeting Details<span style="margin-left: 5px;"><i
+                        class=" fa fa-info-circle"></i></span>
+                </h4> -->
+
+                <div class="row" style="margin-top: 5px;"></div>
+                <div class="panel panel-flat  border-top-primary" id="courseStudents" style="width: 70%;margin: auto;">
+                    <div class="panel-heading pt-20 pl-20">
+							<span class="panel-title" style="font-size: 20px;"> <i
+                                    class="fa fa-briefcase position-left"></i><span
+                                    class="text-semibold"><span th:text="${student.firstName+' '+student.lastName}"></span> fee payments</span>
+							</span>
+
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="table-responsive" style="margin-top: 1%;">
+                            <center>
+                                <h4><span class="text-bold"> LOAN AMOUNT  : $450000</span></h4><br/>
+                                <h4><span class="text-bold"> TOTAL PAID AMOUNT : <span th:text="${total}"></span></span></h4>
+                                <hr style="border:1px solid black;"/>
+                                <h4><span class="text-bold"> REMAINING AMOUNT : <span th:text="${remaining}"></span></span></h4>
+                            </center>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="panel panel-flat  border-top-primary" id="studentList" style="width: 70%;margin: auto;margin-top:1%;">
+                    <div class="panel-heading pt-20 pl-20">
+							<span class="panel-title" style="font-size: 20px;"> <i
+                                    class="fa fa-tasks position-left"></i><span
+                                    class="text-semibold">Payment History</span>
+							</span>
+
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="table-responsive" style="margin-top: 1%;">
+                            <table class="table  table-striped table-hover">
+                                <thead>
+                                <tr class="text-semi-bold;"
+                                    style="background-color: #394f72; color: #FFF;">
+                                    <th class="text-bold ">Date</th>
+
+                                    <th class="text-bold " style="width: 40%;">Observation</th>
+                                    <th class="text-bold "><span class="pull-right">Amount</span></th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="payment:${payments}">
+                                    <td class="text-semibold"><a href="#"><span
+                                            th:text="${payment.date}" class="plainText"></span></a></td>
+                                    <td style="width:40%;" class="text-semibold"><a href="#"><span
+                                            th:text="${payment.description}" class="plainText"></span></a></td>
+
+
+
+                                    <td class="text-semibold"><a href="#"><span
+                                            th:text="${'$ '+payment.amount}" class="plainText pull-right"></span></a></td>
+
+
+
+
+
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div id="newCourse" class="hidden">
+
+                    <div class="panel panel-flat" style="width:40%;margin:auto;">
+                        <div class="panel-heading pt-20 pl-20">
+                            <h3 class="panel-title">
+                                <span class="text-semibold">Add Course</span>
+                            </h3>
+                            <br />
+                            <hr style="border: 1px solid #000; margin: 10px 0 5px;" />
+
+                        </div>
+                        <form id="register_course" method="POST" action="/courses" >
+                            <div class="panel-body" style="margin-top: 1%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="code" class="control-label text-semibold">
+                                                    Course Code<span class="text-danger">*</span>
+                                                </label> <input type="text" name="code"
+                                                                class="form-control input-roundless" id="code"
+                                                                required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="title" class="control-label text-semibold">
+                                                    Course Title<span class="text-danger">*</span>
+                                                </label> <input type="text" name="title"
+                                                                class="form-control input-roundless" id="title"
+                                                                required="required" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="credits" class="control-label text-semibold">
+                                                    Course Nber of credits<span class="text-danger">*</span>
+                                                </label> <input type="text" name="credits"
+                                                                class="form-control input-roundless" id="credits"
+                                                                required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="weight" class="control-label text-semibold">
+                                                    Course Weight<span class="text-danger">*</span>
+                                                </label> <input type="text" name="weight"
+                                                                class="form-control input-roundless" id="weight"
+                                                                required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="department"
+                                                       class="control-label text-semibold"> Choose
+                                                    Department <span class="text-danger">*</span>
+                                                </label> <select class="form-control" name="department"
+                                                                 required="required" id="department">
+                                                <option th:each="dept:${departments}" th:value="${dept.uuid}" th:text="${dept.name}"></option>
+
+
+                                            </select>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="pull-right" style="margin: 10px;">
+                                        <button type="button" class="btn btn-default"
+                                                onclick="showAndHide('#newCourse','#courseList')">
+                                            <i class="fa fa-ban"></i><span>Cancel</span>
+                                        </button>
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-check-circle-o"></i><span>Submit</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div></form>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="row">
+                    <div data-th-replace="back-End/Layout/footer :: myFooter"></div>
+                </div>
+                <div data-th-replace="/back-End/Layout/custom :: myScript"></div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

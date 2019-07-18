@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from followtechnique.com/themes/bird_v1/theme/page_starter.htm by HTTrack Website Copier/3.x [XR&CO'2010], Wed, 13 Jul 2016 20:28:57 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCHOOL MIS</title>
+
+    <div data-th-replace="back-End/Layout/CSS :: myCss"></div>
+
+    <link type="text/css" rel="stylesheet" href="form_tag_inputs.htm"
+          id="style">
+    <link type="text/css" rel="stylesheet" href="form_tag_inputs.htm"
+          id="theme">
+
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+
+
+
+</head>
+
+<body>
+
+<div data-th-replace="back-End/Layout/header :: myHeader"></div>
+<div class="page-container" style="min-height: 700px">
+    <div class="page-content">
+        <div data-th-replace="back-End/Layout/sidebar :: mySidebar"></div>
+        <!--  <div data-th-replace="back-End/Layout/content :: myContent">-->
+        <div class="content-wrapper" data-th-fragment="myContent">
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+
+                    <ul class="breadcrumb">
+                        <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                        <li>Students</li>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+
+            <div class="content">
+
+                <!-- <h4>
+                    Meeting Details<span style="margin-left: 5px;"><i
+                        class=" fa fa-info-circle"></i></span>
+                </h4> -->
+
+                <div class="row" style="margin-top: 5px;"></div>
+                <div class="panel panel-flat  border-top-primary" id="questionList">
+                    <div class="panel-heading pt-20 pl-20">
+							<span class="panel-title" style="font-size: 20px;"> <i
+                                    class="fa fa-tasks position-left"></i><span
+                                    class="text-semibold">All Students</span>
+							</span>
+                        <div class="pull-right">
+                            <button class="btn btn-info hidden" data-toggle="modal"
+                                    data-target="#forgetPassword">
+                                <span class="text-semibold">Upload</span><i
+                                    class="fa fa-upload"></i>
+                            </button>
+                            <button class="btn btn-default"
+                                    onclick="showAndHide('#questionList','#newQuestion')">
+                                <span class="text-semibold">NEW</span><i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="table-responsive" style="margin-top: 1%;">
+                            <table class="table  table-striped table-hover">
+                                <thead>
+                                <tr class="text-semi-bold;"
+                                    style="background-color: #394f72; color: #FFF;">
+
+                                    <th class="text-bold">Names</th>
+
+                                    <th class="text-bold">gender</th>
+                                    <th class="text-bold" style="width: 30%;">Description</th>
+                                    <th class="text-bold">Faculty</th>
+                                    <th class="text-bold">Position</th>
+                                    <th class="text-bold"><span class="pull-right">Actions</span></th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="stuff:${teachers}">
+                                    <td class="text-semibold"><a href="#"><span
+                                            th:text="${stuff.degree+' '+stuff.firstName+' '+stuff.lastName}" class="plainText"></span></a></td>
+
+                                    <td class="text-semibold"><a><span
+                                            th:text="${stuff.gender}" class="plainText"></span></a></td>
+
+                                    <td class="text-semibold" style="width: 30%;"><a><span
+                                            th:text="${stuff.description}" class="plainText"></span></a></td>
+                                    <td class="text-semibold"><a><span
+                                            th:text="${stuff.faculty.name}" class="plainText"></span></a></td>
+
+
+
+                                    <td class="text-semibold"><span th:text="${stuff.position.name}"></span></td>
+                                    <td class="text-semibold"><span class="pull-right"><a  class="btn btn-default btn-sm" >Info<i class="fa fa-info-circle"></a></span></td>
+
+
+
+
+
+
+
+                                    <div  class="modal fade">
+                                        <div class="modal-dialog modal-sm">
+                                            <form method="POST"   class="deleteQuestion">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">
+                                                            <b>DELETE QUESTION</b>
+                                                        </h4>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h4>ARE YOU SURE YOU WANT TO DELETE THIS QUESTION?</h4>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
+                                                            <i class="fa fa-close"></i>Cancel
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fa fa-check"></i>Submit
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <div id="newQuestion" class="hidden">
+
+                    <div class="panel panel-flat">
+                        <div class="panel-heading pt-20 pl-20">
+                            <h3 class="panel-title">
+                                <span class="text-semibold">New Student</span>
+                            </h3>
+                            <br />
+                            <hr style="border: 1px solid #000; margin: 10px 0 5px;" />
+
+                        </div>
+                        <form id="new_student" method="POST" action="/students" >
+                            <div class="panel-body" style="margin-top: 1%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="name" class="control-label text-semibold">
+                                                    FirstName<span class="text-danger">*</span>
+                                                </label> <input type="text" name="fname"
+                                                                class="form-control input-roundless" id="firstName"
+                                                                required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="name" class="control-label text-semibold">
+                                                    LastName<span class="text-danger">*</span>
+                                                </label> <input type="text" name="lname"
+                                                                class="form-control input-roundless" id="lastName"
+                                                                required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="questionType"
+                                                       class="control-label text-semibold"> Choose
+                                                    Gender <span class="text-danger">*</span>
+                                                </label> <select class="form-control" name="gender"
+                                                                 required="required">
+                                                <option>Male</option>
+                                                <option>Female</option>
+
+
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="questionType"
+                                                       class="control-label text-semibold"> Choose
+                                                    Department <span class="text-danger">*</span>
+                                                </label> <select class="form-control" name="dep"
+                                                                 required="required">
+                                                <option ></option>
+
+
+                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="description"
+                                                       class="control-label text-semibold"> Student
+                                                    Description <span class="required">*</span>
+                                                </label>
+                                                <textarea rows="6" id="questionDescription"
+                                                          name="desc" class="form-control input-roundless"></textarea>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="pull-right" style="margin: 10px;">
+                                        <button class="btn btn-default"
+                                                onclick="showAndHide('#newQuestion','#questionList')">
+                                            <i class="fa fa-ban"></i><span>Cancel</span>
+                                        </button>
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="fa fa-check-circle-o"></i><span>Submit</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div></form>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div data-th-replace="back-End/Layout/footer :: myFooter"></div>
+                </div>
+                <div data-th-replace="/back-End/Layout/custom :: myScript"></div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
